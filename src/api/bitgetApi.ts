@@ -19,7 +19,7 @@ export async function fetchBtcUsdtTicker(): Promise<TickerApiResponse> {
  * @param limit - Number of candles to fetch (max 1000)
  */
 export async function fetchCandleData(
-  symbol: string = 'BTCUSDT',
+  symbol: string,
   granularity: string = '1h',
   endTime: number = Date.now(),
   limit: number = 100,

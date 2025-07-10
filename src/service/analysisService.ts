@@ -14,12 +14,12 @@ export interface GridAnalysisResult {
  * Analyze historical candle data to determine grid parameters.
  * @param candles - Array of CandleData (historical candles)
  * @param gridCount - Number of grid levels (default: 10)
- * @param gridSpread - Percentage spread for grid (default: 0.05 = 5%)
+ * @param gridSpread - Percentage spread for grid (default: 0.5 = 50%)
  */
 export function analyzeCandlesForGrid(
   candles: CandleData[],
-  gridCount: number = 10,
-  gridSpread: number = 0.05
+  gridCount: number,
+  gridSpread: number
 ): GridAnalysisResult {
   const closes = candles.map((c) => parseFloat(c[CandleField.close]));
   const minPrice = Math.min(...closes);
