@@ -1,7 +1,6 @@
-import axios from 'axios';
 import { TickerData, TickerApiResponse, CandleData, CandleApiResponse } from './types';
-
-const BASE_URL = 'https://api.bitget.com/api/v2/spot/market';
+import { httpGet } from './http';
+import { BASE_URL } from '../config/config';
 
 /**
  * Fetches BTCUSDT ticker data from Bitget API.
@@ -9,22 +8,22 @@ const BASE_URL = 'https://api.bitget.com/api/v2/spot/market';
  */
 export async function fetchBtcUsdtTicker(): Promise<TickerApiResponse> {
   const url = `${BASE_URL}/tickers?symbol=BTCUSDT`;
-  const response = await axios.get<TickerApiResponse>(url);
-  return response.data;
+  return httpGet<TickerApiResponse>(url);
 }
 
 /**
  * Fetches historical candle data from Bitget API.
  * @param symbol - Trading pair symbol (e.g., 'BTCUSDT')
- * @param period - Candle period (1m, 5m, 15m, 30m, 1H, 4H, 6H, 12H, 1D, 1W, 1M)
+ * @param granularity - Time interval of charts (1min, 5min, 15min, 30min, 1h, 4h, 6h, 12h, 1day, 3day, 1week, 1M)
+ * @param endTime - Time end point of the chart data (default: current Unix millisecond timestamp)
  * @param limit - Number of candles to fetch (max 1000)
  */
 export async function fetchCandleData(
   symbol: string = 'BTCUSDT',
-  period: string = '1H',
-  limit: number = 100
+  granularity: string = '1h',
+  endTime: number = Date.now(),
+  limit: number = 100,
 ): Promise<CandleApiResponse> {
-  const url = `${BASE_URL}/candles?symbol=${symbol}&period=${period}&limit=${limit}`;
-  const response = await axios.get<CandleApiResponse>(url);
-  return response.data;
+  const url = `${BASE_URL}/candles?symbol=${symbol}&granularity=${granularity}&endTime=${endTime}&limit=${limit}`;
+  return httpGet<CandleApiResponse>(url);
 }
