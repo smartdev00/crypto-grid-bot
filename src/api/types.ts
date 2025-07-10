@@ -24,21 +24,34 @@ export interface TickerApiResponse {
   data: TickerData[];
 }
 
-export interface CandleData {
-  ts: string;
-  open: string;
-  high: string;
-  low: string;
-  close: string;
-  vol: string;
-  volCcy: string;
-  volCcyQuote: string;
-  confirm: string;
-}
+export type CandleData = string[];
+
+// export interface CandleData {
+//   ts: string;
+//   open: string;
+//   high: string;
+//   low: string;
+//   close: string;
+//   vol: string;
+//   volCcy: string;
+//   volCcyQuote: string;
+//   confirm: string;
+// }
 
 export interface CandleApiResponse {
   code: string;
   msg: string;
   requestTime: number;
   data: CandleData[];
-} 
+}
+
+export enum CandleField {
+  ts = 0,
+  open = 1,
+  high = 2,
+  low = 3,
+  close = 4,
+  baseVol = 5,
+  usdtVol = 6,
+  quoteVol = 7,
+}
