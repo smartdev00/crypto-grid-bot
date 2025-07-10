@@ -1,0 +1,33 @@
+{
+  "name": "grid-bot",
+  "version": "1.0.0",
+  "description": "Crypto grid trading bot on bitget",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node-dev --respawn src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smartdev00/crypto-grid-bot.git"
+  },
+  "keywords": [
+    "crypto",
+    "grid",
+    "bot",
+    "trading",
+    "bitget"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smartdev00/crypto-grid-bot/issues"
+  },
+  "homepage": "https://github.com/smartdev00/crypto-grid-bot#readme",
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "ts-node-dev": "^2.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.7"
+  }
+}
