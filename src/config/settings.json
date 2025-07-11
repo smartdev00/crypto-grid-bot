@@ -1,7 +1,83 @@
 {
+  "settings": {
+    "grid_count": 10,
+    "grid_spread": 0.5
+  },
   "symbols": [
     {
       "symbol": "BTCUSDT"
+    },
+    {
+      "symbol": "ETHUSDT"
+    },
+    {
+      "symbol": "SOLUSDT"
+    },
+    {
+      "symbol": "DOGEUSDT"
+    },
+    {
+      "symbol": "ADAUSDT"
+    },
+    {
+      "symbol": "XRPUSDT"
+    },
+    {
+      "symbol": "HBARUSDT"
+    },
+    {
+      "symbol": "XLMUSDT"
+    },
+    {
+      "symbol": "HYPEUSDT"
+    },
+    {
+      "symbol": "SUIUSDT"
+    },
+    {
+      "symbol": "PEPEUSDT"
+    },
+    {
+      "symbol": "TRUMPUSDT"
+    },
+    {
+      "symbol": "PAXGUSDT"
+    },
+    {
+      "symbol": "PIUSDT"
+    },
+    {
+      "symbol": "SHELLUSDT"
+    },
+    {
+      "symbol": "BROCCOLIUSDT"
+    },
+    {
+      "symbol": "IPUSDT"
+    },
+    {
+      "symbol": "TSTUSDT"
+    },
+    {
+      "symbol": "VINEUSDT"
+    },
+    {
+      "symbol": "ANIMEUSDT"
+    },
+    {
+      "symbol": "BERAUSDT"
+    },
+    {
+      "symbol": "LAYERUSDT"
+    },
+    {
+      "symbol": "ZEREBROUSDT"
+    },
+    {
+      "symbol": "PIPPINUSDT"
+    },
+    {
+      "symbol": "GRIFFAINUSDT"
     }
   ]
 }

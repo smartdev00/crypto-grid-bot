@@ -1,4 +1,5 @@
 import { BatchAnalyzeResult, GridAnalysisResult } from '../service/types';
+import { logger } from '../utils/logger';
 import { AllSymbolsState, SymbolGridState, GridLevel } from './types';
 
 export class GridManager {
@@ -16,6 +17,8 @@ export class GridManager {
           centerPrice: gridAnalysis.avgPrice,
           lastPrice: gridAnalysis.currentPrice,
         });
+      } else {
+        logger.info(`Analyzing failed: ${analyze.symbol}`);
       }
     }
   }
