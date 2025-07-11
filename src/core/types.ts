@@ -11,6 +11,7 @@ export interface SymbolGridState {
   upperPrice: number;
   lowerPrice: number;
   centerPrice: number;
+  volatility: number;
 }
 
 export type AllSymbolsState = Map<string, SymbolGridState>;

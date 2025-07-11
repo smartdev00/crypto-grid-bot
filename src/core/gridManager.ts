@@ -1,4 +1,5 @@
 import { BatchAnalyzeResult, GridAnalysisResult } from '../service/types';
+import { logger } from '../utils/logger';
 import { AllSymbolsState, SymbolGridState, GridLevel } from './types';
 
 export class GridManager {
@@ -15,7 +16,10 @@ export class GridManager {
           lowerPrice: gridAnalysis.gridLower,
           centerPrice: gridAnalysis.avgPrice,
           lastPrice: gridAnalysis.currentPrice,
+          volatility: gridAnalysis.volatility,
         });
+      } else {
+        logger.info(`Analyzing failed: ${analyze.symbol}`);
       }
     }
   }
@@ -77,6 +81,7 @@ export class GridManager {
       console.log(`Lower price: $${symbolState.lowerPrice}`);
       console.log(`Centre price: $${symbolState.centerPrice}`);
       console.log(`Last price: $${symbolState.lastPrice}`);
+      console.log(`Volatility: $${symbolState.volatility}`);
       console.log(symbolState.grids);
     });
   }

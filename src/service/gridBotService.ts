@@ -7,11 +7,12 @@ import { sleep } from '../utils/helpers';
 
 let count = 0;
 
-export async function checkAndBuyOnGridBatch(gridManager: GridManager) {
+export async function processGridBatchesOnce(gridManager: GridManager) {
   const symbols = Array.from(gridManager['state'].keys());
+  logger.info(`The length of analyzed symbols: ${symbols.length}`);
   count++;
 
-  console.log(`============== ${count} ===================`);
+  console.log(`=================== ${count} ===================`);
 
   for (let i = 0; i < symbols.length; i += BATCH_SIZE) {
     const batch = symbols.slice(i, i + BATCH_SIZE);
@@ -101,5 +102,10 @@ export async function checkAndBuyOnGridBatch(gridManager: GridManager) {
     }
   }
   gridManager.log();
-  await checkAndBuyOnGridBatch(gridManager);
+}
+
+export async function checkAndBuyOnGridBatch(gridManager: GridManager) {
+  while (true) {
+    await processGridBatchesOnce(gridManager);
+  }
 }
