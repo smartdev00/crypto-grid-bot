@@ -6,8 +6,8 @@ import { BASE_URL } from '../config/config';
  * Fetches BTCUSDT ticker data from Bitget API.
  * Extend this function or add more for other endpoints as needed.
  */
-export async function fetchBtcUsdtTicker(): Promise<TickerApiResponse> {
-  const url = `${BASE_URL}/tickers?symbol=BTCUSDT`;
+export async function fetchSymbolTicker(symbol: string): Promise<TickerApiResponse> {
+  const url = `${BASE_URL}/tickers?symbol=${symbol}`;
   return httpGet<TickerApiResponse>(url);
 }
 

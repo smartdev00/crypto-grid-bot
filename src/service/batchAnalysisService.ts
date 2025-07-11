@@ -1,11 +1,13 @@
 import {
   BATCH_SIZE,
   DELAY_BETWEEN_BATCHES_MS,
+  GRANULARITY,
   GRID_COUNT,
   GRID_SPREAD,
+  LIMIT_TO_FETCH_CANDLE,
   SYMBOLS,
 } from '../config/config';
-import { fetchCandleData } from '../api/bitgetApi';
+import { fetchSymbolTicker, fetchCandleData } from '../api/bitgetApi';
 import { analyzeCandlesForGrid } from './analysisService';
 import { logger } from '../utils/logger';
 import { sleep } from '../utils/helpers';
@@ -21,8 +23,20 @@ export async function batchFetchAndAnalyzeAllSymbols(): Promise<BatchAnalyzeResu
 
     const promises = batch.map(async (symbol) => {
       try {
-        const candleRes = await fetchCandleData(symbol.symbol, '1h', Date.now(), 100);
-        const analysis = analyzeCandlesForGrid(candleRes.data, GRID_COUNT, GRID_SPREAD);
+        const candleRes = await fetchCandleData(
+          symbol.symbol,
+          GRANULARITY,
+          Date.now(),
+          LIMIT_TO_FETCH_CANDLE
+        );
+        const symbolTicker = await fetchSymbolTicker(symbol.symbol);
+
+        const analysis = analyzeCandlesForGrid(
+          candleRes.data,
+          parseFloat(symbolTicker.data[0].lastPr),
+          GRID_COUNT,
+          GRID_SPREAD
+        );
         // logger.info(`Analysis for ${symbol.symbol}`, analysis);
 
         return { symbol: symbol.symbol, analysis };

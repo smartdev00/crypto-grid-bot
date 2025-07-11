@@ -1,5 +1,4 @@
-import { GridAnalysisResult } from '../service/analysisService';
-import { BatchAnalyzeResult } from '../service/types';
+import { BatchAnalyzeResult, GridAnalysisResult } from '../service/types';
 import { AllSymbolsState, SymbolGridState, GridLevel } from './types';
 
 export class GridManager {
@@ -15,7 +14,7 @@ export class GridManager {
           upperPrice: gridAnalysis.gridUpper,
           lowerPrice: gridAnalysis.gridLower,
           centerPrice: gridAnalysis.avgPrice,
-          lastPrice: gridAnalysis.avgPrice,
+          lastPrice: gridAnalysis.currentPrice,
         });
       }
     }
@@ -65,8 +64,19 @@ export class GridManager {
     });
   }
 
+  updateLastPrice(symbol: string, price: number) {
+    const symbolState = this.state.get(symbol);
+    if (!symbolState) return;
+    symbolState.lastPrice = price;
+  }
+
   log() {
     this.state.forEach((symbolState) => {
+      console.log(`Symbol: ${symbolState.symbol}`);
+      console.log(`Upper price: $${symbolState.upperPrice}`);
+      console.log(`Lower price: $${symbolState.lowerPrice}`);
+      console.log(`Centre price: $${symbolState.centerPrice}`);
+      console.log(`Last price: $${symbolState.lastPrice}`);
       console.log(symbolState.grids);
     });
   }
