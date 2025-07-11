@@ -1,23 +1,16 @@
 import { CandleData, CandleField } from '../api/types';
-
-export interface GridAnalysisResult {
-  minPrice: number;
-  maxPrice: number;
-  avgPrice: number;
-  volatility: number;
-  gridLower: number;
-  gridUpper: number;
-  gridStep: number;
-}
+import { GridAnalysisResult } from './types';
 
 /**
  * Analyze historical candle data to determine grid parameters.
  * @param candles - Array of CandleData (historical candles)
- * @param gridCount - Number of grid levels (default: 10)
- * @param gridSpread - Percentage spread for grid (default: 0.5 = 50%)
+ * @param currentPrice - Current price of base currency
+ * @param gridCount - Number of grid levels
+ * @param gridSpread - Percentage spread for grid
  */
 export function analyzeCandlesForGrid(
   candles: CandleData[],
+  currentPrice: number,
   gridCount: number,
   gridSpread: number
 ): GridAnalysisResult {
@@ -45,5 +38,6 @@ export function analyzeCandlesForGrid(
     gridLower,
     gridUpper,
     gridStep,
+    currentPrice,
   };
 }

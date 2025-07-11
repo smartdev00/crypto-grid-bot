@@ -9,3 +9,5 @@ export const GRID_SPREAD = 0.5;
 
 export const BATCH_SIZE = 20;
 export const DELAY_BETWEEN_BATCHES_MS = 1100; // Slightly over 1s to be safe
+export const GRANULARITY = '1h'; // (1min, 5min, 15min, 30min, 1h, 4h, 6h, 12h, 1day, 3day, 1week, 1M)
+export const LIMIT_TO_FETCH_CANDLE = 100;

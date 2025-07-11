@@ -2,18 +2,6 @@
   "symbols": [
     {
       "symbol": "BTCUSDT"
-    },
-    {
-      "symbol": "ETHUSDT"
-    },
-    {
-      "symbol": "SOLUSDT"
-    },
-    {
-      "symbol": "DOGEUSDT"
-    },
-    {
-      "symbol": "ADAUSDT"
     }
   ]
 }
